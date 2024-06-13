@@ -3,10 +3,6 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
     path: '',
     redirectTo: 'sign-in',
     pathMatch: 'full'
@@ -20,8 +16,20 @@ const routes: Routes = [
     loadChildren: () => import('./authentication/sign-up/sign-up.module').then( m => m.SignUpPageModule)
   },
   {
-    path: 'main-menu',
-    loadChildren: () => import('./pages/main-menu/main-menu.module').then( m => m.MainMenuPageModule)
+    path: 'product-detail/:id',
+    loadChildren: () => import('./pages/product/product-detail/product-detail.module').then( m => m.ProductDetailPageModule)
+  },
+  {
+    path: 'cart',
+    loadChildren: () => import('./pages/cart/cart.module').then( m => m.CartPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   },
 ];
 

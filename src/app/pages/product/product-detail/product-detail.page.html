@@ -1,0 +1,46 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/cart">
+        <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+  </ion-header>
+
+  <div class="container" *ngIf="product">
+
+    <div class="image">
+      <img src="{{ product.image }}">
+    </div>
+
+    <div class="content">
+      <h4>{{ product.product_name }}</h4>
+      <p class="p1">{{ product.product_name }}</p>
+      <p class="p2">Rp. {{ product.product_price }}</p>
+
+      <ion-textarea label="Notes" labelPlacement="stacked" placeholder="E.g. Size L"></ion-textarea>
+    </div>
+
+  </div>
+
+  <ion-button class="button-bottom" expand="block" routerLink="/product-detail">Add to Cart
+    <ion-icon slot="end" name="cart-outline"></ion-icon>
+  </ion-button>
+
+</ion-content>

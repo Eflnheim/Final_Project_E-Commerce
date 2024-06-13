@@ -1,20 +1,66 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-searchbar 
+    debounce="800"
+    #searchInput
+    show-clear-button="always"
+    (ionInput)="onSearchChange($event)"></ion-searchbar>
+    <ion-buttons slot="end">
+      <ion-button class="button-4"><ion-icon name="menu-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button class="button-5" routerLink="/cart"><ion-icon name="cart-outline"></ion-icon></ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
 
+  <div class="top-menu">
+    <ion-button class="button-1" shape="round" fill="outline">On Sale</ion-button>
+    <ion-button class="button-2" shape="round" fill="outline">Recommend</ion-button>
+    <ion-button class="button-3" shape="round" fill="outline">For You</ion-button>
+  </div>
+
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </div>
+  <div class="card">
+    <strong class="rec-font"></strong>
+    <swiper-container space-between="30" pagination="true" pagination-clickable="true" *ngIf="products && products.length">
+      <swiper-slide *ngFor="let product of products.slice(1, 4)">
+        <img [src]="product.image" alt="Product Image">
+      </swiper-slide>
+    </swiper-container>
+    
+    <div class="card-2">
+      <strong class="rec-front">Type Shit</strong>
+      <ion-row>
+        <ion-col sizeLg="3" sizeMd="4" sizeSm="6" sizeXl="3" sizeXs="6" *ngFor="let product of products; let i = index" [attr.data-index]="i">
+          <ion-card [routerLink]="'product-detail/' + product.product_id">
+            <ion-thumbnail>
+              <ion-img [src]="product.image"></ion-img>
+            </ion-thumbnail>
+
+            <ion-label>
+              <ion-text color="dark"><strong>{{  product.product_name  }}</strong></ion-text>
+              <p>
+                <ion-text color="dark">
+                  Rp. <strong>{{  product.product_price  }}</strong>
+                </ion-text>
+
+                <ion-text class="rating" color="dark">
+                  {{  product.rating  }}
+                  <ion-icon name="star" color="warning"></ion-icon>
+                </ion-text>
+              </p>
+            </ion-label>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </div>
   </div>
 </ion-content>

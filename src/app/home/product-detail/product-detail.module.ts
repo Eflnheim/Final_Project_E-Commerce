@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MainMenuPageRoutingModule } from './main-menu-routing.module';
+import { ProductDetailPageRoutingModule } from './product-detail-routing.module';
 
-import { MainMenuPage } from './main-menu.page';
+import { ProductDetailPage } from './product-detail.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MainMenuPageRoutingModule
+    ProductDetailPageRoutingModule
   ],
-  declarations: [MainMenuPage]
+  declarations: [ProductDetailPage]
 })
-export class MainMenuPageModule {}
+export class ProductDetailPageModule {}
